@@ -1,0 +1,31 @@
+{{#each this}}
+  <li class='gallery-card'>
+    <img
+      class='gallery-card__img'
+      src='{{webformatURL}}'
+      alt='{{tags}}'
+      loading='lazy'
+      id='{{id}}'
+      data-src='{{largeImageURL}}'
+    />
+
+    <div class='info'>
+      <div class='info__thumb'>
+        <p class='info-item'>
+          <b>{{likes}}L</b>
+        </p>
+        <p class='info-item'>
+          <b>{{views}}V</b>
+        </p>
+        <p class='info-item'>
+          <b>{{comments}}C</b>
+        </p>
+        <p class='info-item'>
+          <b>{{downloads}}D</b>
+        </p>
+      </div>
+
+      <div class='blur' style='background-image: url({{webformatURL}})'></div>
+    </div>
+  </li>
+{{/each}}

@@ -83,7 +83,7 @@
 .lightbox__button--close {
   top: 8px;
   right: 8px;
-  background-image: url('../images/icon-close.svg');
+  background-image: url('../images/svg/icon-close.svg');
 }
 
 .lightbox__button--close:hover,
@@ -94,14 +94,14 @@
 .lightbox__button--arrow-left {
   top: 50%;
   left: 8px;
-  background-image: url('../images/arrow-left.svg');
+  background-image: url('../images/svg/arrow-left.svg');
   opacity: 0.4;
 }
 
 .lightbox__button--arrow-right {
   top: 50%;
   right: 8px;
-  background-image: url('../images/arrow-right.svg');
+  background-image: url('../images/svg/arrow-right.svg');
   opacity: 0.4;
 }
 

@@ -2,19 +2,25 @@
   position: fixed;
   z-index: 2;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding: 12px 80px;
+
   background-color: $primary-dark-color;
   opacity: 0.97;
 }
 
 .header-title {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: 'Pacifico', cursive;
+
   font-size: 40px;
   color: #fff;
   opacity: 0.8;
+  text-shadow: 3px 3px 6px rgba(63, 63, 63, 0.616), 1px 1px 1px rgba(63, 63, 63, 0.616);
 }
 
 .header-link {

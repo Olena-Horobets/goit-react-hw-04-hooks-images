@@ -10,4 +10,3 @@ export default {
   modal: document.querySelector('.js-lightbox'),
   image: document.querySelector('.lightbox__image'),
 };
-//

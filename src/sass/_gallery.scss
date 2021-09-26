@@ -16,11 +16,12 @@
 .gallery-card {
   position: relative;
   flex-basis: calc((100% - 80px) / 4);
-  // width: 300px;
   height: 220px;
   margin: 10px;
   overflow: hidden;
   border-radius: 8px;
+
+  box-shadow: $obj-shadow;
 }
 
 .gallery-card__img {
@@ -47,8 +48,8 @@
   z-index: 1;
   bottom: 0;
   left: 0;
-  padding-left: 22px;
-  padding-right: 22px;
+  padding-left: 18px;
+  padding-right: 18px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -69,9 +70,41 @@
 
 .info-item {
   color: rgb(255, 255, 255);
+  opacity: 0.93;
+  font-weight: 600;
+  font-size: 16px;
   text-shadow: 2px 2px 4px rgba(63, 63, 63, 0.616), 1px 1px 1px rgba(63, 63, 63, 0.616);
 }
 
 .info-item:not(first-child) {
-  margin-left: 16px;
+  margin-left: 12px;
+}
+
+// icons
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 16px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: inherit;
+  white-space: nowrap;
+  direction: ltr;
+
+  margin-left: 4px;
+  opacity: 0.93;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }

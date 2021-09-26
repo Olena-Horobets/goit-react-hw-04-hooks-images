@@ -56,7 +56,6 @@ async function fetchAndRender() {
         return;
       }
       onServerResponse(success, `Hooray! We found ${data.totalHits} images.`);
-      // console.log(data.hits);
 
       const markup = galleryItemTpl(data.hits);
       onMarkupRender(markup);

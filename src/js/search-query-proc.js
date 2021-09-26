@@ -31,7 +31,6 @@ function onSearch(e) {
     onNewFetch(value);
     fetchAndRender();
   } catch (err) {
-    console.log(err);
     Loading.remove();
     onServerResponse(failure, 'Please, enter valid query!');
   }
@@ -62,12 +61,18 @@ async function fetchAndRender() {
         onServerResponse(warning, `This was all we had for you, try something else, please`);
         refs.loadMoreBtn.classList.add('is-hidden');
         refs.loadMoreBtn.removeEventListener('click', fetchAndRender);
-        onMarkupRender(galleryItemTpl(data.hits));
-        Loading.remove();
-        return;
+        try {
+          onMarkupRender(galleryItemTpl(data.hits));
+          Loading.remove();
+          smoothScrollingTo(String(data.hits[0].id));
+          return;
+        } catch (err) {
+          throw Errow;
+        }
       }
 
       onMarkupRender(galleryItemTpl(data.hits));
+      smoothScrollingTo(String(data.hits[0].id));
       photoFinder.setNextPage();
       Loading.remove();
       refs.loadMoreBtn.classList.remove('is-hidden');
@@ -95,4 +100,13 @@ function onReset() {
   refs.resetBtn.disabled = true;
   refs.resetBtn.removeEventListener('click', onReset);
   Loading.remove();
+}
+
+function smoothScrollingTo(id) {
+  const element = document.getElementById(id);
+  element.scrollIntoView({
+    alignToTop: true,
+    behavior: 'smooth',
+    block: 'center',
+  });
 }

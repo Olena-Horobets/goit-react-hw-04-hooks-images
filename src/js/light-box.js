@@ -1,4 +1,7 @@
 import refs from './refs.js';
+import { Notify, Loading } from 'notiflix';
+import './notiflix-styles';
+const { failure } = Notify;
 
 class LightBoxModal {
   constructor() {
@@ -38,6 +41,7 @@ class LightBoxModal {
   setImageData() {
     refs.image.src = this._srcList[this.currentIdx].largeImageURL;
     refs.image.alt = this._srcList[this.currentIdx].tags;
+    Loading.remove();
   }
 
   // main event listener
@@ -45,22 +49,29 @@ class LightBoxModal {
     if (e.target.nodeName !== 'IMG') {
       return;
     } else {
-      refs.body.classList.add('body-fixed');
-      refs.modal.classList.add('is-open');
+      try {
+        Loading.standard();
+        refs.body.classList.add('body-fixed');
+        refs.modal.classList.add('is-open');
 
-      this.setNewIdx(e.target.id);
-      this.setImageData();
+        this.setNewIdx(e.target.id);
+        this.setImageData();
 
-      refs.modal.addEventListener('click', this.arrowSwipe);
-      window.addEventListener('keydown', this.keyboardSwipe);
+        refs.modal.addEventListener('click', this.arrowSwipe);
+        window.addEventListener('keydown', this.keyboardSwipe);
 
-      refs.modal.addEventListener('click', this.modalClose);
-      window.addEventListener('keydown', this.keyboardClose);
+        refs.modal.addEventListener('click', this.modalClose);
+        window.addEventListener('keydown', this.keyboardClose);
+      } catch (err) {
+        Loading.remove();
+        failure('Please, enter valid query!');
+      }
     }
   }
 
   // swiping left-right
   onArrowClick(e) {
+    Loading.standard();
     if (e.target.getAttribute('data-action') === 'thumb-left') {
       this.decreaseIdx();
     } else if (e.target.getAttribute('data-action') === 'thumb-right') {
@@ -70,6 +81,7 @@ class LightBoxModal {
   }
 
   onKeyboardSwipePress(e) {
+    Loading.standard();
     if (e.code === 'ArrowLeft') {
       this.decreaseIdx();
       this.setImageData();

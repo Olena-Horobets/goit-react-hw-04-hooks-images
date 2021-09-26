@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Заголовок страницы</title>
+    <title>Perfect image founder</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
 
     <link
       rel="stylesheet"
@@ -16,6 +19,15 @@
   </head>
 
   <body>
+    <header class="page-header">
+      <a href="index.html" class="header-link">
+        <svg width="60" height="60">
+          <use href="images/symbol-defs.svg#icon-logo"></use>
+        </svg>
+      </a>
+      <h1 class="header-title">Perfect image founder</h1>
+    </header>
+
     <div class="container">
       <form class="search-form" id="search-form">
         <input
@@ -25,13 +37,22 @@
           autocomplete="off"
           placeholder="Search images..."
         />
-        <button class="search-form__btn" type="submit">Search</button>
+        <button class="btn search-form__btn" type="submit">Search</button>
+        <button class="btn search-form__btn" type="button" data-action="reset" disabled>
+          Reset
+        </button>
       </form>
+
+      <h2 class="reqest-message">...enter what are you looking for</h2>
 
       <ul class="gallery" id="gallery"></ul>
 
-      <button type="button" class="load-more is-hidden" data-action="load-more">Load more</button>
+      <button type="button" class="btn load-more is-hidden" data-action="load-more">
+        Load more
+      </button>
     </div>
+
+    <include src="./templates/modal.html"></include>
 
     <script src="./index.js"></script>
   </body>

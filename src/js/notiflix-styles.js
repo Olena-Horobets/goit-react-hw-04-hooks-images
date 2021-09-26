@@ -3,7 +3,7 @@ import { Notify, Loading } from 'notiflix';
 Notify.init({
   width: 'auto',
   position: 'right-top',
-  distance: '50px',
+  distance: '100px',
   opacity: 1,
   borderRadius: '8px',
   timeout: 2400,

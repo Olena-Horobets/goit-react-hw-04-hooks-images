@@ -1,0 +1,75 @@
+html {
+  box-sizing: border-box;
+  overflow-y: overlay;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $primary-light-color;
+}
+
+h1,
+h2,
+p,
+b {
+  margin: 0;
+}
+
+.is-hidden {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  pointer-events: none;
+}
+
+.container {
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.icon {
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.btn {
+  padding: 10px 24px;
+  font-size: 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: $primary-dark-color;
+  box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.418), inset -3px -3px 8px rgba(0, 0, 0, 0.418);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transform: scale(1);
+
+  transition: background-color 150ms ease-out, transform 150ms ease-out;
+}
+
+.btn:hover {
+  background-color: $accent-hover-color;
+}
+
+.btn:active {
+  background-color: $accent-active-color;
+  transform: scale(0.97);
+}

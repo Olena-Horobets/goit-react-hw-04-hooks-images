@@ -1,0 +1,28 @@
+.page-header {
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: $primary-dark-color;
+  opacity: 0.97;
+}
+
+.header-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 40px;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.header-link {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.header-link:hover {
+  color: $accent-hover-color;
+  opacity: 1;
+}

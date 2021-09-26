@@ -10,4 +10,4 @@ export default {
   modal: document.querySelector('.js-lightbox'),
   image: document.querySelector('.lightbox__image'),
 };
-// created class for whole modal functionality, including changing content of modal by keyboard or interface arrows and closing modal by interface button, clicking on backdrop and escape button
+//

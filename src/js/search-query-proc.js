@@ -55,10 +55,19 @@ async function fetchAndRender() {
         onReset();
         return;
       }
-      onServerResponse(success, `Hooray! We found ${data.totalHits} images.`);
+      if (photoFinder.page === 1) {
+        onServerResponse(success, `Hooray! We found ${data.totalHits} images.`);
+      }
+      if (data.hits.length < photoFinder.perPage) {
+        onServerResponse(warning, `This was all we had for you, try something else, please`);
+        refs.loadMoreBtn.classList.add('is-hidden');
+        refs.loadMoreBtn.removeEventListener('click', fetchAndRender);
+        onMarkupRender(galleryItemTpl(data.hits));
+        Loading.remove();
+        return;
+      }
 
-      const markup = galleryItemTpl(data.hits);
-      onMarkupRender(markup);
+      onMarkupRender(galleryItemTpl(data.hits));
       photoFinder.setNextPage();
       Loading.remove();
       refs.loadMoreBtn.classList.remove('is-hidden');

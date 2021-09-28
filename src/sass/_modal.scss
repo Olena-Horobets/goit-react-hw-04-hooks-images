@@ -11,7 +11,7 @@
   height: 100vh;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--animation-duration) var(--timing-function);
+  transition: opacity $animation-duration $timing-function;
 }
 
 .lightbox.is-open {
@@ -20,7 +20,6 @@
 }
 
 .body-fixed {
-  overflow-y: auto;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -37,7 +36,7 @@
 
 .lightbox__content {
   transform: scale(0.8);
-  transition: transform var(--animation-duration) var(--timing-function);
+  transition: transform $animation-duration $timing-function;
 }
 
 .lightbox.is-open .lightbox__content {
@@ -66,8 +65,8 @@
   background-color: transparent;
   color: #fff;
   cursor: pointer;
-  transition: background-color var(--animation-duration) var(--timing-function),
-    opacity var(--animation-duration) var(--timing-function);
+  transition: background-color $animation-duration $timing-function,
+    opacity $animation-duration $timing-function;
   outline: none;
 
   background-position: center;
@@ -88,14 +87,14 @@
 
 .lightbox__button--arrow-left {
   top: 50%;
-  left: 8px;
+  left: 40px;
   background-image: url('../images/svg/arrow-left.svg');
   opacity: 0.4;
 }
 
 .lightbox__button--arrow-right {
   top: 50%;
-  right: 8px;
+  right: 40px;
   background-image: url('../images/svg/arrow-right.svg');
   opacity: 0.4;
 }

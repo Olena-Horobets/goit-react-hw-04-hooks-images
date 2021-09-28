@@ -11,7 +11,5 @@ $obj-shadow: 0.2338741421699524px 0.24023641645908356px 0.378425657749176px 0px 
   12.080107688903809px 12.408732414245605px 6.98483943939209px 0px #364a5017,
   17.438875198364258px 17.913280487060547px 11px 0px #364a5017;
 
-:root {
-  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-duration: 250ms;
-}
+$timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+$animation-duration: 250ms;

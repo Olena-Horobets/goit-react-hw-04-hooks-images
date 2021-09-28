@@ -11,6 +11,11 @@ html {
 
 body {
   background-color: $primary-light-color;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 
 h1,
@@ -33,14 +38,11 @@ b {
 
 .container {
   width: 100%;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 160px;
+  padding: 160px 40px 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 40px;
 }
 
 .icon {
@@ -72,4 +74,17 @@ b {
 .btn:active {
   background-color: $accent-active-color;
   transform: scale(0.97);
+}
+
+// notification
+.fa-poop {
+  background-image: url(../images/svg/poop.svg);
+}
+
+.fa-like {
+  background-image: url(../images/svg/like.svg);
+}
+
+.fa-bell {
+  background-image: url(../images/svg/bell.svg);
 }

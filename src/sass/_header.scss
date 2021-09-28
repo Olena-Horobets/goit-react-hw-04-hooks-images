@@ -1,4 +1,4 @@
-.page-header {
+.header {
   position: fixed;
   z-index: 2;
   display: flex;
@@ -11,7 +11,7 @@
   opacity: 0.97;
 }
 
-.header-title {
+.header__title {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -22,7 +22,7 @@
   text-shadow: 3px 3px 6px rgba(63, 63, 63, 0.616), 1px 1px 1px rgba(63, 63, 63, 0.616);
 }
 
-.header-link {
+.logo {
   color: #fff;
   opacity: 0.8;
   transform: scale(1);
@@ -31,7 +31,7 @@
     opacity $animation-duration $timing-function, transform $animation-duration $timing-function;
 }
 
-.header-link:hover {
+.logo:hover {
   color: $accent-hover-color;
   opacity: 1;
   transform: scale(1.03);

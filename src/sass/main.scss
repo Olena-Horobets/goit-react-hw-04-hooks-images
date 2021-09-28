@@ -4,17 +4,4 @@
 @import './search-form';
 @import './gallery';
 @import './modal';
-
-// notification
-
-.fa-poop {
-  background-image: url(../images/svg/poop.svg);
-}
-
-.fa-like {
-  background-image: url(../images/svg/like.svg);
-}
-
-.fa-bell {
-  background-image: url(../images/svg/bell.svg);
-}
+@import './footer';

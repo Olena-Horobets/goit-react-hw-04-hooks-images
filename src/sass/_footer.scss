@@ -1,0 +1,16 @@
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 50px;
+  align-items: center;
+  background-color: #ff86aa2f;
+  box-shadow: inset 0px 3px 8px rgba(255, 255, 255, 0.38), inset 0px -3px 8px rgba(0, 0, 0, 0.38);
+
+  font-size: 16px;
+  color: #fff;
+}
+
+.footer__logo {
+  margin-left: 16px;
+}

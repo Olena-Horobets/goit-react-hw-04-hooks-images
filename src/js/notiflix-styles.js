@@ -6,7 +6,7 @@ Notify.init({
   distance: '100px',
   opacity: 1,
   borderRadius: '8px',
-  timeout: 2400,
+  timeout: 3000,
   showOnlyTheLastOne: true,
 
   fontFamily: 'inherit',
@@ -19,25 +19,25 @@ Notify.init({
   fontAwesomeIconSize: '14px',
 
   success: {
-    background: '#00A19D',
+    background: '#3699C3',
     textColor: '#FFFFFF',
     fontAwesomeClassName: 'fas fa-like icon',
   },
 
   failure: {
-    background: '#E05D5D',
+    background: '#DF2E2E',
     textColor: '#FFFFFF',
     fontAwesomeClassName: 'fas fa-poop icon',
   },
 
   warning: {
-    background: '#FFB319',
+    background: '#FF8A00',
     textColor: '#FFFFFF',
     fontAwesomeClassName: 'fas fa-bell icon',
   },
 
   info: {
-    background: '#6F69AC',
+    background: '#AC227D',
     textColor: '#FFFFFF',
     fontAwesomeClassName: 'fas fa-bell icon',
   },
@@ -46,5 +46,5 @@ Notify.init({
 Loading.init({
   backgroundColor: 'transparent',
   svgSize: '60px',
-  svgColor: 'rgb(3, 104, 104)',
+  svgColor: '#2b777e',
 });

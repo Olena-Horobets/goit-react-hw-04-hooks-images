@@ -1,4 +1,4 @@
-import 'SearchForm/SearchForm.css';
+import './SearchForm.css';
 import { Component } from 'react';
 
 class SearchForm extends Component {

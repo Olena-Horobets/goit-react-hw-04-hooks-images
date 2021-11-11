@@ -2,13 +2,14 @@ import 'regenerator-runtime/runtime.js';
 
 import { Notify, Loading } from 'notiflix';
 import './notiflix-styles';
-const { success, warning, failure, info } = Notify;
 
 import refs from './refs.js';
 import photoFinder from './fetchApi.js';
 import galleryItemTpl from '../templates/gallery-item.hbs';
 
-import modal from './light-box';
+// import modal from './light-box';
+import modal from './new-lightbox';
+const { success, warning, failure, info } = Notify;
 
 refs.searchForm.addEventListener('submit', onSearch);
 refs.searchForm.addEventListener('input', e => {
@@ -58,7 +59,10 @@ async function fetchAndRender() {
         return;
       }
       if (data.hits.length < photoFinder.perPage) {
-        onServerResponse(info, `This was all we had for you, try something else, please`);
+        onServerResponse(
+          info,
+          `This was all we had for you, try something else, please`,
+        );
         refs.loadMoreBtn.classList.add('is-hidden');
         refs.loadMoreBtn.removeEventListener('click', fetchAndRender);
         try {

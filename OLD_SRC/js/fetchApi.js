@@ -23,7 +23,9 @@ class SearchAPIData {
   }
 
   getBasicFetchUrl() {
-    return `${this.#BASE_URL}?key=${this.#API_KEY}&q=${this._searcQuery}&page=${this.page}`;
+    return `${this.#BASE_URL}?key=${this.#API_KEY}&q=${this._searcQuery}&page=${
+      this.page
+    }`;
   }
 }
 
@@ -36,9 +38,11 @@ class SearchPhotoData extends SearchAPIData {
   }
 
   getFetchUrl() {
-    const url = `${this.getBasicFetchUrl()}&per_page=${this.perPage}&image_type=${
-      this.imageType
-    }&orientation=${this.orientation}&safesearch=${this.safesearch}`;
+    const url = `${this.getBasicFetchUrl()}&per_page=${
+      this.perPage
+    }&image_type=${this.imageType}&orientation=${this.orientation}&safesearch=${
+      this.safesearch
+    }`;
     return url;
   }
 }

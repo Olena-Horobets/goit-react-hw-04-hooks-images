@@ -8,5 +8,5 @@ export default {
   message: document.querySelector('.reqest-message'),
 
   modal: document.querySelector('.js-lightbox'),
-  image: document.querySelector('.lightbox__image'),
+  // image: document.querySelector('.lightbox__image'),
 };

@@ -15,7 +15,7 @@
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  /* font-family: 'Pacifico', cursive; */
+  font-family: 'Pacifico', cursive;
   font-size: 40px;
   color: #fff;
   opacity: 0.8;

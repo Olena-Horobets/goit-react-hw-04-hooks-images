@@ -32,8 +32,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-color: var(--primary-light-color);
-  /* font-family: 'Source Sans Pro', sans-serif; */
+  font-family: 'Source Sans Pro', sans-serif;
+}
 
+.App {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

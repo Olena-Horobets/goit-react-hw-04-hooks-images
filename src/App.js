@@ -1,15 +1,25 @@
+import { Component } from 'react';
+
 import { Header } from './Header/Header';
 import { SearchForm } from './SearchForm/SearchForm';
 import { Footer } from './Footer/Footer';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <SearchForm />
-      <Footer />
-    </div>
-  );
+class App extends Component {
+  state = {
+    status: 'idle',
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <div className="container">
+          <SearchForm />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;

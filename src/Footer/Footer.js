@@ -4,7 +4,7 @@ import { Component } from 'react';
 class Footer extends Component {
   render() {
     return (
-      <footer class="footer">
+      <footer className="footer">
         <p>&#169; All rights reserved. Images source</p>
         {/* <a href="https://pixabay.com/"
           className="logo footer__logo"

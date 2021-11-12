@@ -2,21 +2,44 @@ import './SearchForm.css';
 import { Component } from 'react';
 
 class SearchForm extends Component {
+  state = {
+    value: '',
+  };
+
+  handleInputChange = e => {
+    this.setState({ value: e.currentTarget.value.toLowerCase().trim() });
+  };
+
+  handleFormSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state.value);
+  };
+
   render() {
     return (
-      <form class="search-form" id="search-form">
+      <form
+        className="search-form"
+        id="search-form"
+        onSubmit={this.handleFormSubmit}
+      >
         <input
-          class="search-form__input"
+          onChange={this.handleInputChange}
+          value={this.state.value}
+          className="search-form__input"
           type="text"
           name="query"
-          autocomplete="off"
+          autoComplete="off"
           placeholder="Search images..."
         />
-        <button class="btn search-form__btn" type="submit">
+        <button
+          className="btn search-form__btn"
+          type="submit"
+          disabled={!this.state.value.length}
+        >
           Search
         </button>
         <button
-          class="btn search-form__btn"
+          className="btn search-form__btn"
           type="button"
           data-action="reset"
           disabled

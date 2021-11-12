@@ -1,17 +1,16 @@
-class SearchAPIData {
+class SearchPhotoData {
   #BASE_URL;
   #API_KEY;
 
-  constructor({ url, key, perPage }) {
+  constructor({ url, key, perPage, imageType, orientation, safesearch }) {
     this.#BASE_URL = url;
     this.#API_KEY = key;
-    this._searcQuery = '';
+
     this.page = 1;
     this.perPage = perPage;
-  }
-
-  set searcQuery(value) {
-    this._searcQuery = value;
+    this.imageType = imageType;
+    this.orientation = orientation;
+    this.safesearch = safesearch;
   }
 
   setNextPage() {
@@ -22,23 +21,14 @@ class SearchAPIData {
     this.page = 1;
   }
 
-  getBasicFetchUrl() {
-    return `${this.#BASE_URL}?key=${this.#API_KEY}&q=${this._searcQuery}&page=${
+  getBasicFetchUrl(searchValue) {
+    return `${this.#BASE_URL}?key=${this.#API_KEY}&q=${searchValue}&page=${
       this.page
     }`;
   }
-}
 
-class SearchPhotoData extends SearchAPIData {
-  constructor({ url, key, perPage, imageType, orientation, safesearch }) {
-    super({ url, key, perPage });
-    this.imageType = imageType;
-    this.orientation = orientation;
-    this.safesearch = safesearch;
-  }
-
-  getFetchUrl() {
-    const url = `${this.getBasicFetchUrl()}&per_page=${
+  getFetchUrl(searchValue = '') {
+    const url = `${this.getBasicFetchUrl(searchValue)}&per_page=${
       this.perPage
     }&image_type=${this.imageType}&orientation=${this.orientation}&safesearch=${
       this.safesearch

@@ -43,8 +43,7 @@ class App extends Component {
 
     if (prevValue !== newValue) {
       photoFinder.resetPage();
-
-      if (!newValue) {
+      if (newValue === '') {
         this.resetSearchData();
         return;
       }
@@ -55,9 +54,7 @@ class App extends Component {
           this.resetSearchData();
           return;
         }
-        this.setState(() => {
-          return { images: [...response] };
-        });
+        this.setState({ images: [...response] });
         try {
           smoothScrollingTo(String(response[0].id));
         } catch {}

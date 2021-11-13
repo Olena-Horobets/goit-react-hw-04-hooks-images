@@ -39,7 +39,10 @@ class SearchPhotoData {
   getFetchResponse(query) {
     return fetch(photoFinder.getFetchUrl(query))
       .then(res => res.json())
-      .then(data => data.hits);
+      .then(data => {
+        // console.log(data);
+        return data.hits;
+      });
   }
 }
 

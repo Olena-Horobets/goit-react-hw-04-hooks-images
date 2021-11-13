@@ -55,7 +55,7 @@
   right: 0;
   height: 100%;
 
-  transition: background-color 150ms ease-out, opacity 150ms ease-out;
+  transition: background-color 150ms ease-out;
 }
 
 .search-form__btn[data-action='reset'] {
@@ -64,6 +64,5 @@
 }
 
 .search-form__btn:disabled {
-  opacity: 0.9;
   background-color: var(--primary-light-color);
 }

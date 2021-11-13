@@ -4,14 +4,17 @@ import { Component } from 'react';
 class ImageGalleryItem extends Component {
   render() {
     return (
-      <li className="gallery-card" href="{{largeImageURL}}">
+      <li
+        className="gallery-card"
+        id={this.props.id}
+        onClick={this.props.onCardClick}
+        datasrc={this.props.datasrc}
+      >
         <img
           className="gallery-card__img"
           src={this.props.url}
           alt={this.props.tags}
           loading="lazy"
-          id={this.props.id}
-          //   dataSrc={largeImageURL}
         />
 
         {/* <div class="info">

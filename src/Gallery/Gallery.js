@@ -1,15 +1,15 @@
-import './ImageGallery.css';
+import './Gallery.css';
 
 import { Component } from 'react';
-import { ImageGalleryItem } from 'ImageGalleryItem/ImageGalleryItem';
+import { GalleryItem } from 'GalleryItem/GalleryItem';
 
-class ImageGallery extends Component {
+class Gallery extends Component {
   render() {
     return (
       <ul className="gallery">
         {this.props.images.map(el => {
           return (
-            <ImageGalleryItem
+            <GalleryItem
               key={el.id}
               url={el.webformatURL}
               alt={el.tags}
@@ -24,4 +24,4 @@ class ImageGallery extends Component {
   }
 }
 
-export { ImageGallery };
+export { Gallery };

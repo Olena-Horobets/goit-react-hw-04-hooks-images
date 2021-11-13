@@ -1,7 +1,7 @@
-import './ImageGalleryItem.css';
+import './GalleryItem.css';
 import { Component } from 'react';
 
-class ImageGalleryItem extends Component {
+class GalleryItem extends Component {
   render() {
     return (
       <li
@@ -47,4 +47,4 @@ class ImageGalleryItem extends Component {
   }
 }
 
-export { ImageGalleryItem };
+export { GalleryItem };

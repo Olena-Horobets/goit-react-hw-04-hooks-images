@@ -1,5 +1,6 @@
 import './SearchForm.css';
 import { Component } from 'react';
+import { Button } from 'Button/Button';
 
 class SearchForm extends Component {
   state = {
@@ -30,23 +31,23 @@ class SearchForm extends Component {
           type="text"
           name="query"
           autoComplete="off"
+          autofocus="true"
           placeholder="Search images..."
         />
-        <button
-          className="btn search-form__btn"
+        <Button
+          class="btn search-form__btn"
           type="submit"
           disabled={!this.state.value.length}
-        >
-          Search
-        </button>
-        <button
-          className="btn search-form__btn"
+          text="Search"
+        />
+
+        <Button
+          class="btn search-form__btn"
           type="button"
-          data-action="reset"
+          action="reset"
           disabled
-        >
-          Reset
-        </button>
+          text="Reset"
+        />
       </form>
     );
   }

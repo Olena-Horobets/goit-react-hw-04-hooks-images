@@ -1,6 +1,9 @@
 import { Component } from 'react';
 import { photoFinder } from 'API';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Header } from 'Header/Header';
 import { SearchForm } from 'SearchForm/SearchForm';
 import { Gallery } from 'Gallery/Gallery';
@@ -16,6 +19,8 @@ function smoothScrollingTo(id) {
     block: 'center',
   });
 }
+
+const notify = message => toast.error(message);
 
 class App extends Component {
   state = {
@@ -46,7 +51,8 @@ class App extends Component {
 
       photoFinder.getFetchResponse(newValue).then(response => {
         if (response.length === 0) {
-          console.log(`Sorry, we couldn't find anything for you(`);
+          notify(`Sorry, we couldn't find anything for you(`);
+          this.resetSearchData();
           return;
         }
         this.setState(() => {
@@ -86,7 +92,8 @@ class App extends Component {
     photoFinder.setNextPage();
     photoFinder.getFetchResponse(searchValue).then(response => {
       if (response.length === 0) {
-        console.log(`Sorry, we couldn't find anything for you(`);
+        notify(`Sorry, we couldn't find anything for you(`);
+        this.resetSearchData();
         return;
       }
       this.setState(({ images }) => {
@@ -101,6 +108,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <ToastContainer theme="colored" icon={true} />
         <Header />
         <div className="container">
           {this.state.modal.isShown && (
@@ -110,7 +118,7 @@ class App extends Component {
               onModalClose={this.toggleModal}
             />
           )}
-          <SearchForm onSubmit={this.onSearchSubmit} />
+          <SearchForm onSubmit={this.onSearchSubmit} notify={notify} />
           {this.state.searchValue && (
             <Gallery
               images={this.state.images}

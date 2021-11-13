@@ -1,5 +1,7 @@
 import './SearchForm.css';
+
 import { Component } from 'react';
+
 import { Button } from 'Button/Button';
 
 class SearchForm extends Component {
@@ -14,7 +16,7 @@ class SearchForm extends Component {
   handleFormSubmit = e => {
     e.preventDefault();
     if (!this.state.value.trim().length) {
-      console.log('ENTER SOMETHING');
+      this.props.notify('ENTER SOMETHING');
       this.resetInput();
       return;
     }

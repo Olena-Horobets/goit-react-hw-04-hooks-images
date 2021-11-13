@@ -9,7 +9,7 @@
     inset 0px -3px 8px rgba(0, 0, 0, 0.38);
 
   font-size: 16px;
-  color: #fff;
+  color: var(--white-color);
 }
 
 .footer__logo {

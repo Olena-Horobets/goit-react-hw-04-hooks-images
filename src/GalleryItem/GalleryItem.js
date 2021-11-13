@@ -9,11 +9,12 @@ class GalleryItem extends Component {
         id={this.props.id}
         onClick={this.props.onCardClick}
         datasrc={this.props.datasrc}
+        dataalt={this.props.alt}
       >
         <img
           className="gallery-card__img"
           src={this.props.url}
-          alt={this.props.tags}
+          alt={this.props.alt}
           loading="lazy"
         />
 

@@ -38,11 +38,14 @@ class SearchPhotoData {
 
   getFetchResponse(query) {
     return fetch(photoFinder.getFetchUrl(query))
-      .then(res => res.json())
-      .then(data => {
-        // console.log(data);
-        return data.hits;
-      });
+      .then(res => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        throw Error;
+      })
+      .then(data => data.hits)
+      .catch(error => error);
   }
 }
 

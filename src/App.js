@@ -10,6 +10,7 @@ import { Gallery } from 'Gallery/Gallery';
 import { Button } from 'Button/Button';
 import { Footer } from './Footer/Footer';
 import { Modal } from 'Modal/Modal';
+import { LoadingViev } from 'LoadingView/LoadingView';
 
 function smoothScrollingTo(id) {
   const element = document.getElementById(id);
@@ -22,14 +23,22 @@ function smoothScrollingTo(id) {
 
 const notify = message => toast.error(message);
 
+const STATUS = {
+  IDLE: 'idle',
+  PENDING: 'pending',
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
+};
+
 class App extends Component {
   state = {
-    status: 'idle',
+    status: STATUS.IDLE,
     searchValue: '',
     images: [],
     modal: {
       isShown: false,
       imageUrl: '',
+      alt: '',
     },
   };
 
@@ -48,23 +57,33 @@ class App extends Component {
         return;
       }
 
-      photoFinder.getFetchResponse(newValue).then(response => {
-        if (response.length === 0) {
-          notify(`Sorry, we couldn't find anything for you(`);
+      this.setState({ status: STATUS.PENDING });
+      photoFinder
+        .getFetchResponse(newValue)
+        .then(response => {
+          // if (!response || !response.length) {
+          //   throw Error;
+          // }
+          this.setState({ images: [...response] });
+          try {
+            this.setState({ status: STATUS.RESOLVED });
+            smoothScrollingTo(String(response[0].id));
+          } catch {
+            throw Error;
+          }
+        })
+        .catch(err => {
+          notify(`Sorry, we couldn't find anything for you`);
           this.resetSearchData();
-          return;
-        }
-        this.setState({ images: [...response] });
-        try {
-          smoothScrollingTo(String(response[0].id));
-        } catch {}
-      });
+          this.setState({ status: STATUS.REJECTED });
+        });
     }
   }
 
   onGalleryCardClick = e => {
     const url = e.currentTarget.getAttribute('datasrc');
-    this.toggleModal(url);
+    const alt = e.currentTarget.getAttribute('dataalt');
+    this.toggleModal(url, alt);
   };
 
   resetSearchData = () => {
@@ -78,50 +97,55 @@ class App extends Component {
     return this.state.images.length < photoFinder.perPage;
   };
 
-  toggleModal = (imageUrl = '') => {
+  toggleModal = (imageUrl = '', alt = '') => {
     this.setState(({ modal }) => {
-      return { modal: { isShown: !modal.isShown, imageUrl } };
+      return { modal: { isShown: !modal.isShown, imageUrl, alt } };
     });
   };
 
   onLoadMore = () => {
+    this.setState({ status: STATUS.PENDING });
     const { searchValue } = this.state;
     photoFinder.setNextPage();
-    photoFinder.getFetchResponse(searchValue).then(response => {
-      if (response.length === 0) {
-        notify(`Sorry, we couldn't find anything for you(`);
+    photoFinder
+      .getFetchResponse(searchValue)
+      .then(response => {
+        // if (!response || !response.length) {
+        //   throw Error;
+        // }
+        this.setState(({ images }) => {
+          return { images: [...images, ...response] };
+        });
+        try {
+          this.setState({ status: STATUS.RESOLVED });
+          smoothScrollingTo(String(response[0].id));
+        } catch {
+          throw Error;
+        }
+      })
+      .catch(err => {
+        notify(`Sorry, we couldn't find anything for you`);
         this.resetSearchData();
-        return;
-      }
-      this.setState(({ images }) => {
-        return { images: [...images, ...response] };
+        this.setState({ status: STATUS.REJECTED });
       });
-      try {
-        smoothScrollingTo(String(response[0].id));
-      } catch {}
-    });
   };
 
-  render() {
-    return (
-      <div className="App">
-        <ToastContainer theme="colored" icon={true} />
-        <Header />
-        <div className="container">
-          {this.state.modal.isShown && (
-            <Modal
-              src={this.state.modal.imageUrl}
-              alt="jhjhj"
-              onModalClose={this.toggleModal}
-            />
-          )}
-          <SearchForm onSubmit={this.onSearchSubmit} notify={notify} />
-          {this.state.searchValue && (
-            <Gallery
-              images={this.state.images}
-              onCardClick={this.onGalleryCardClick}
-            />
-          )}
+  defineMainContent = () => {
+    const { status, images } = this.state;
+    if (status === STATUS.IDLE) {
+      return (
+        <h2 className="reqest-message">...enter what are you looking for</h2>
+      );
+    }
+
+    if (status === STATUS.PENDING) {
+      return <LoadingViev />;
+    }
+
+    if (status === STATUS.RESOLVED) {
+      return (
+        <>
+          <Gallery images={images} onCardClick={this.onGalleryCardClick} />
           {!this.isLastPage() ? (
             <Button
               type="button"
@@ -130,6 +154,28 @@ class App extends Component {
               onClick={this.onLoadMore}
             />
           ) : null}
+        </>
+      );
+    }
+  };
+
+  render() {
+    const { status, modal, images } = this.state;
+
+    return (
+      <div className="App">
+        <ToastContainer theme="colored" icon={true} limit={1} />
+        <Header />
+        <div className="container">
+          {modal.isShown && (
+            <Modal
+              src={modal.imageUrl}
+              alt={modal.alt}
+              onModalClose={this.toggleModal}
+            />
+          )}
+          <SearchForm onSubmit={this.onSearchSubmit} notify={notify} />
+          {this.defineMainContent()}
         </div>
         <Footer />
       </div>

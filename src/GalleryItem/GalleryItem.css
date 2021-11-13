@@ -1,6 +1,6 @@
 .gallery-card {
   position: relative;
-  flex-basis: calc((100% - 80px) / 4);
+  width: calc((100% - 80px) / 4);
   height: 220px;
   margin: 10px;
   overflow: hidden;

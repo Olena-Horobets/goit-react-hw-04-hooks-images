@@ -6,26 +6,40 @@ class SearchPhotoData {
     this.#BASE_URL = url;
     this.#API_KEY = key;
 
-    // this.page = 1;
+    this.page = 1;
     this.perPage = perPage;
     this.imageType = imageType;
     this.orientation = orientation;
     this.safesearch = safesearch;
   }
 
-  getBasicFetchUrl(searchValue, page) {
-    return `${this.#BASE_URL}?key=${
-      this.#API_KEY
-    }&q=${searchValue}&page=${page}`;
+  setNextPage = () => {
+    return (this.page += 1);
+  };
+
+  resetPage = () => {
+    this.page = 1;
+  };
+
+  getBasicFetchUrl(searchValue) {
+    return `${this.#BASE_URL}?key=${this.#API_KEY}&q=${searchValue}&page=${
+      this.page
+    }`;
   }
 
-  getFetchUrl(searchValue = '', page) {
-    const url = `${this.getBasicFetchUrl(searchValue, page)}&per_page=${
+  getFetchUrl(searchValue = '') {
+    const url = `${this.getBasicFetchUrl(searchValue)}&per_page=${
       this.perPage
     }&image_type=${this.imageType}&orientation=${this.orientation}&safesearch=${
       this.safesearch
     }`;
     return url;
+  }
+
+  getFetchResponse(query) {
+    return fetch(photoFinder.getFetchUrl(query))
+      .then(res => res.json())
+      .then(data => data.hits);
   }
 }
 

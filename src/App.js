@@ -8,10 +8,6 @@ import { Button } from 'Button/Button';
 import { Footer } from './Footer/Footer';
 import { Modal } from 'Modal/Modal';
 
-function URL(searchValue = '', page = 1) {
-  return `https://pixabay.com/api/?key=22936688-6b3396d854cca2c3f8d0c7d41&q=${searchValue}&page=${page}&per_page=12&image_type=photo&orientation=horizontal&safesearch=true`;
-}
-
 function smoothScrollingTo(id) {
   const element = document.getElementById(id);
   element.scrollIntoView({
@@ -26,21 +22,10 @@ class App extends Component {
     status: 'idle',
     searchValue: '',
     images: [],
-    page: 1,
     modal: {
       isShown: false,
       imageUrl: '',
     },
-  };
-
-  setNextPage = () => {
-    this.setState(({ page }) => {
-      return { page: (page += 1) };
-    });
-  };
-
-  resetPage = () => {
-    this.setState({ page: 1 });
   };
 
   onSearchSubmit = searchValue => {
@@ -50,37 +35,21 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const prevValue = prevState.searchValue;
     const newValue = this.state.searchValue;
-    const newPage = this.state.page;
 
     if (prevValue !== newValue) {
-      fetch(photoFinder.getFetchUrl(newValue, newPage))
-        .then(res => res.json())
-        .then(data => {
-          if (data.totalHits === 0) {
-            console.log(`Sorry, we couldn't find anything for you(`);
-            return;
-          }
-
-          this.setState(({ images }) => {
-            return { images: [...data.hits] };
-          });
-
-          this.isLastPage(data.hits);
-          smoothScrollingTo(String(data.hits[0].id));
+      photoFinder.resetPage();
+      photoFinder.getFetchResponse(newValue).then(response => {
+        if (response.length === 0) {
+          console.log(`Sorry, we couldn't find anything for you(`);
+          return;
+        }
+        this.setState(() => {
+          return { images: [...response] };
         });
-    }
-
-    if (prevState.page !== newPage) {
-      fetch(photoFinder.getFetchUrl(newValue, newPage))
-        .then(res => res.json())
-        .then(data => {
-          this.setState(({ images }) => {
-            return { images: [...images, ...data.hits] };
-          });
-
-          this.isLastPage(data.hits);
-          smoothScrollingTo(String(data.hits[0].id));
-        });
+        try {
+          smoothScrollingTo(String(response[0].id));
+        } catch {}
+      });
     }
   }
 
@@ -89,25 +58,39 @@ class App extends Component {
     this.toggleModal(url);
   };
 
-  // resetSearchData = value => {
-  //   this.setState(() => {
-  //     return {
-  //       searchValue: value,
-  //       // images: [],
-  //       page: 1,
-  //     };
-  //   });
-  // };
+  resetSearchData = () => {
+    this.setState(() => {
+      return {
+        searchValue: '',
+        images: [],
+      };
+    });
+  };
 
-  isLastPage = length => {
-    if (length < photoFinder.perPage) {
-      console.log(`This was all we had for you, try something else, please`);
-    }
+  isLastPage = () => {
+    return this.state.images.length < photoFinder.perPage;
   };
 
   toggleModal = (imageUrl = '') => {
     this.setState(({ modal }) => {
       return { modal: { isShown: !modal.isShown, imageUrl } };
+    });
+  };
+
+  onLoadMore = () => {
+    const { searchValue } = this.state;
+    photoFinder.setNextPage();
+    photoFinder.getFetchResponse(searchValue).then(response => {
+      if (response.length === 0) {
+        console.log(`Sorry, we couldn't find anything for you(`);
+        return;
+      }
+      this.setState(({ images }) => {
+        return { images: [...images, ...response] };
+      });
+      try {
+        smoothScrollingTo(String(response[0].id));
+      } catch {}
     });
   };
 
@@ -130,15 +113,14 @@ class App extends Component {
               onCardClick={this.onGalleryCardClick}
             />
           )}
-          {this.state.searchValue && (
+          {!this.isLastPage() ? (
             <Button
               type="button"
               class="btn load-more"
-              action="load-more"
               text="Load more"
-              onClick={this.setNextPage}
+              onClick={this.onLoadMore}
             />
-          )}
+          ) : null}
         </div>
         <Footer />
       </div>

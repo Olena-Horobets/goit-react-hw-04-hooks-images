@@ -8,12 +8,21 @@ class SearchForm extends Component {
   };
 
   handleInputChange = e => {
-    this.setState({ value: e.currentTarget.value.toLowerCase().trim() });
+    this.setState({ value: e.currentTarget.value.toLowerCase() });
   };
 
   handleFormSubmit = e => {
     e.preventDefault();
+    if (!this.state.value.trim().length) {
+      console.log('ENTER SOMETHING');
+      this.resetInput();
+      return;
+    }
     this.props.onSubmit(this.state.value);
+    this.resetInput();
+  };
+
+  resetInput = () => {
     this.setState({ value: '' });
   };
 
@@ -31,7 +40,7 @@ class SearchForm extends Component {
           type="text"
           name="query"
           autoComplete="off"
-          autofocus="true"
+          autoFocus={true}
           placeholder="Search images..."
         />
         <Button
@@ -40,7 +49,6 @@ class SearchForm extends Component {
           disabled={!this.state.value.length}
           text="Search"
         />
-
         <Button
           class="btn search-form__btn"
           type="button"

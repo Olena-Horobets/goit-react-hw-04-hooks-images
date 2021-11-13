@@ -38,6 +38,12 @@ class App extends Component {
 
     if (prevValue !== newValue) {
       photoFinder.resetPage();
+
+      if (!newValue) {
+        this.resetSearchData();
+        return;
+      }
+
       photoFinder.getFetchResponse(newValue).then(response => {
         if (response.length === 0) {
           console.log(`Sorry, we couldn't find anything for you(`);
@@ -59,11 +65,9 @@ class App extends Component {
   };
 
   resetSearchData = () => {
-    this.setState(() => {
-      return {
-        searchValue: '',
-        images: [],
-      };
+    this.setState({
+      searchValue: '',
+      images: [],
     });
   };
 

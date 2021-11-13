@@ -19,11 +19,11 @@ class SearchForm extends Component {
       return;
     }
     this.props.onSubmit(this.state.value);
-    this.resetInput();
   };
 
   resetInput = () => {
     this.setState({ value: '' });
+    this.props.onSubmit('');
   };
 
   render() {
@@ -53,8 +53,9 @@ class SearchForm extends Component {
           class="btn search-form__btn"
           type="button"
           action="reset"
-          disabled
+          disabled={!this.state.value}
           text="Reset"
+          onClick={this.resetInput}
         />
       </form>
     );

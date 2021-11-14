@@ -1,13 +1,13 @@
-import './Gallery.css';
+import s from './Gallery.module.css';
 
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { GalleryItem } from 'GalleryItem/GalleryItem';
+import { GalleryItem } from '../GalleryItem/GalleryItem';
 
 class Gallery extends Component {
   render() {
     return (
-      <ul className="gallery">
+      <ul className={s.gallery}>
         {this.props.images.map(el => {
           return (
             <GalleryItem

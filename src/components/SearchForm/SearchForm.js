@@ -3,7 +3,7 @@ import s from './SearchForm.module.css';
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from 'Button/Button';
+import { Button } from 'components/Button/Button';
 
 class SearchForm extends Component {
   state = {

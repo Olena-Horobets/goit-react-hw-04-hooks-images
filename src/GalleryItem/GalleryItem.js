@@ -1,21 +1,21 @@
-import './GalleryItem.css';
+import s from './GalleryItem.module.css';
 import { Component } from 'react';
 
 class GalleryItem extends Component {
   render() {
     return (
       <li
-        className="gallery-card"
+        className={s.galleryCard}
         id={this.props.id}
         onClick={this.props.onCardClick}
         datasrc={this.props.datasrc}
         dataalt={this.props.alt}
       >
         <img
-          className="gallery-card__img"
+          className={s.galleryCard__img}
           src={this.props.url}
           alt={this.props.alt}
-          loading="lazy"
+          // loading="lazy"
         />
 
         {/* <div class="info">

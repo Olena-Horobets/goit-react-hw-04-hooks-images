@@ -1,4 +1,4 @@
-import './SearchForm.css';
+import s from './SearchForm.module.css';
 
 import { Component } from 'react';
 
@@ -31,14 +31,14 @@ class SearchForm extends Component {
   render() {
     return (
       <form
-        className="search-form"
+        className={s.searchForm}
         id="search-form"
         onSubmit={this.handleFormSubmit}
       >
         <input
           onChange={this.handleInputChange}
           value={this.state.value}
-          className="search-form__input"
+          className={s.searchForm__input}
           type="text"
           name="query"
           autoComplete="off"
@@ -46,15 +46,14 @@ class SearchForm extends Component {
           placeholder="Search images..."
         />
         <Button
-          class="btn search-form__btn"
+          class="search-form__btn"
           type="submit"
           disabled={!this.state.value.length}
           text="Search"
         />
         <Button
-          class="btn search-form__btn"
+          class="search-form__btn--reset"
           type="button"
-          action="reset"
           disabled={!this.state.value}
           text="Reset"
           onClick={this.resetInput}

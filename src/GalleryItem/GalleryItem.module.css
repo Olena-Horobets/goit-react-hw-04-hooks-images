@@ -1,4 +1,4 @@
-.gallery-card {
+.galleryCard {
   position: relative;
   width: calc((100% - 80px) / 4);
   height: 220px;
@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-.gallery-card__img {
+.galleryCard__img {
   display: block;
   width: 100%;
   height: 100%;
@@ -55,7 +55,7 @@
   filter: blur(5px);
 }
 
-.info-item {
+.infoItem {
   color: rgb(255, 255, 255);
   opacity: 0.93;
   font-weight: 400;
@@ -64,12 +64,12 @@
     1px 1px 1px rgba(63, 63, 63, 0.616);
 }
 
-.info-item:not(first-child) {
+.infoItem:not(first-child) {
   margin-left: 12px;
 }
 
 /* icons */
-.material-icons {
+.materialIcons {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;

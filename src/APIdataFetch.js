@@ -37,7 +37,7 @@ class SearchPhotoData {
   }
 
   getFetchResponse(query) {
-    return fetch(photoFinder.getFetchUrl(query))
+    return fetch(this.getFetchUrl(query))
       .then(res => {
         if (res.status === 200) {
           return res.json();

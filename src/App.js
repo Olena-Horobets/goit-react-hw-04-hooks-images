@@ -1,7 +1,7 @@
 import './commonStyles.css';
 
 import { Component } from 'react';
-import { photoFinder } from 'API';
+import { photoFinder } from 'APIdataFetch';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -44,10 +44,6 @@ class App extends Component {
     },
   };
 
-  onSearchSubmit = searchValue => {
-    this.setState({ searchValue });
-  };
-
   componentDidUpdate(prevProps, prevState) {
     const prevValue = prevState.searchValue;
     const newValue = this.state.searchValue;
@@ -79,10 +75,9 @@ class App extends Component {
     }
   }
 
-  onGalleryCardClick = e => {
-    const url = e.currentTarget.getAttribute('datasrc');
-    const alt = e.currentTarget.getAttribute('dataalt');
-    this.toggleModal(url, alt);
+  // Methods for search handling
+  onSearchSubmit = searchValue => {
+    this.setState({ searchValue });
   };
 
   resetSearchData = () => {
@@ -93,14 +88,34 @@ class App extends Component {
     });
   };
 
-  isLastPage = () => {
-    return this.state.images.length < photoFinder.perPage;
-  };
+  // Methods for components render
+  defineMainContent = () => {
+    const { status, images } = this.state;
+    if (status === STATUS.IDLE) {
+      return (
+        <h2 className="reqest-message">...enter what are you looking for</h2>
+      );
+    }
 
-  toggleModal = (imageUrl = '', alt = '') => {
-    this.setState(({ modal }) => {
-      return { modal: { isShown: !modal.isShown, imageUrl, alt } };
-    });
+    if (status === STATUS.PENDING) {
+      return <LoadingViev />;
+    }
+
+    if (status === STATUS.RESOLVED) {
+      return (
+        <>
+          <Gallery images={images} onCardClick={this.onGalleryCardClick} />
+          {!this.isLastPage() ? (
+            <Button
+              type="button"
+              class="btn"
+              text="Load more"
+              onClick={this.onLoadMore}
+            />
+          ) : null}
+        </>
+      );
+    }
   };
 
   onLoadMore = () => {
@@ -127,33 +142,21 @@ class App extends Component {
       });
   };
 
-  defineMainContent = () => {
-    const { status, images } = this.state;
-    if (status === STATUS.IDLE) {
-      return (
-        <h2 className="reqest-message">...enter what are you looking for</h2>
-      );
-    }
+  isLastPage = () => {
+    return this.state.images.length < photoFinder.perPage;
+  };
 
-    if (status === STATUS.PENDING) {
-      return <LoadingViev />;
-    }
+  // Methods for modal window
+  onGalleryCardClick = e => {
+    const url = e.currentTarget.getAttribute('datasrc');
+    const alt = e.currentTarget.getAttribute('dataalt');
+    this.toggleModal(url, alt);
+  };
 
-    if (status === STATUS.RESOLVED) {
-      return (
-        <>
-          <Gallery images={images} onCardClick={this.onGalleryCardClick} />
-          {!this.isLastPage() ? (
-            <Button
-              type="button"
-              class="btn load-more"
-              text="Load more"
-              onClick={this.onLoadMore}
-            />
-          ) : null}
-        </>
-      );
-    }
+  toggleModal = (imageUrl = '', alt = '') => {
+    this.setState(({ modal }) => {
+      return { modal: { isShown: !modal.isShown, imageUrl, alt } };
+    });
   };
 
   render() {

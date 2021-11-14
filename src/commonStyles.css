@@ -48,6 +48,18 @@
   margin-top: 60px;
 }
 
+.rejest-image {
+  display: inline-flex;
+  height: 400px;
+  width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url(./images/svg/404-monster.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 /* scrollbar */
 ::-webkit-scrollbar {
   width: 20px;

@@ -26,7 +26,7 @@ class SearchForm extends Component {
 
   resetInput = () => {
     this.setState({ value: '' });
-    this.props.onSubmit('');
+    this.props.onReset();
   };
 
   render() {
@@ -45,6 +45,7 @@ class SearchForm extends Component {
           autoComplete="off"
           autoFocus={true}
           placeholder="Search images..."
+          aria-label="Search images"
         />
         <Button
           class="search-form__btn"

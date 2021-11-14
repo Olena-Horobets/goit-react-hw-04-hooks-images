@@ -1,7 +1,7 @@
 import s from './Header.module.css';
 
 import { Component } from 'react';
-import { ReactComponent as ReactSprite } from 'images/sprite.svg';
+import { ReactComponent as ReactSprite } from 'images/svg/sprite.svg';
 
 class Header extends Component {
   render() {

@@ -116,6 +116,10 @@ class App extends Component {
         </>
       );
     }
+
+    if (status === STATUS.REJECTED) {
+      return <div className="rejest-image"></div>;
+    }
   };
 
   onLoadMore = () => {
@@ -167,7 +171,11 @@ class App extends Component {
         <ToastContainer theme="colored" icon={true} limit={1} />
         <Header />
         <div className="container">
-          <SearchForm onSubmit={this.onSearchSubmit} notify={notify} />
+          <SearchForm
+            onSubmit={this.onSearchSubmit}
+            notify={notify}
+            onReset={this.resetSearchData}
+          />
           {this.defineMainContent()}
         </div>
         <Footer />

@@ -12,6 +12,18 @@
   color: var(--white-color);
 }
 
-.footer__logo {
+.logo {
+  color: var(--white-color);
+  opacity: 0.8;
+  transform: scale(1);
   margin-left: 16px;
+
+  transition: color var(--animation), opacity var(--animation),
+    transform var(--animation);
+}
+
+.logo:hover {
+  color: var(--accent-hover-color);
+  opacity: 1;
+  transform: scale(1.03);
 }

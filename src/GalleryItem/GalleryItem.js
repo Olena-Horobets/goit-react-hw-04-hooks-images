@@ -2,7 +2,7 @@ import s from './GalleryItem.module.css';
 
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ReactComponent as ReactSprite } from 'images/sprite.svg';
+import { ReactComponent as ReactSprite } from 'images/svg/sprite.svg';
 
 class GalleryItem extends Component {
   render() {

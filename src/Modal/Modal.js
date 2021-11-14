@@ -3,7 +3,7 @@ import s from './Modal.module.css';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { ReactComponent as ReactSprite } from 'images/sprite.svg';
+import { ReactComponent as ReactSprite } from 'images/svg/sprite.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -43,6 +43,7 @@ class Modal extends Component {
               type="button"
               className={s.lightbox__buttonClose}
               onClick={this.props.onModalClose}
+              aria-label="close Modal Window"
             >
               <svg className={s.icon} width="32" height="32">
                 <use href="#icon-close"></use>

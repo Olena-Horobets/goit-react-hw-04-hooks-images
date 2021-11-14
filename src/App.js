@@ -1,3 +1,5 @@
+import './commonStyles.css';
+
 import { Component } from 'react';
 import { photoFinder } from 'API';
 
@@ -155,7 +157,7 @@ class App extends Component {
   };
 
   render() {
-    const { status, modal, images } = this.state;
+    const { modal } = this.state;
 
     return (
       <div className="App">

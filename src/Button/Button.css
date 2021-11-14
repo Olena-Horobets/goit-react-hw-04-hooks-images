@@ -5,8 +5,7 @@
   border: none;
   cursor: pointer;
   background-color: var(--primary-dark-color);
-  box-shadow: inset 3px 3px 8px rgba(255, 255, 255, 0.38),
-    inset -3px -3px 8px rgba(0, 0, 0, 0.38);
+  box-shadow: var(--btn-shadow);
   color: var(--white-color);
   font-weight: 600;
   letter-spacing: 1px;

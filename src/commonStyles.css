@@ -1,0 +1,56 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.is-hidden {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  pointer-events: none;
+}
+
+.container {
+  width: 100%;
+  padding: 180px 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.reqest-message {
+  color: var(--white-color);
+  opacity: 0.7;
+  margin-top: 60px;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #ffffff79;
+  border: 2px solid var(--primary-dark-color);
+  opacity: 0.3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-dark-color);
+  border-radius: 10px;
+  box-shadow: var(--btn-shadow);
+}

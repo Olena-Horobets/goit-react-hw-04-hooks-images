@@ -19,7 +19,7 @@
   font-size: 40px;
   color: var(--white-color);
   opacity: 0.8;
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--heading-shadow);
 }
 
 .logo {

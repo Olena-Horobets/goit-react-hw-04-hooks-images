@@ -163,7 +163,7 @@ class App extends Component {
     const { modal } = this.state;
 
     return (
-      <div className="App">
+      <div className={modal.isShown ? 'AppFixed' : 'App'} id="App">
         <ToastContainer theme="colored" icon={true} limit={1} />
         <Header />
         <div className="container">

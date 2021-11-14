@@ -5,6 +5,17 @@
   min-height: 100vh;
 }
 
+.AppFixed {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
+}
+
 .is-hidden {
   position: absolute;
   clip: rect(1px 1px 1px 1px);

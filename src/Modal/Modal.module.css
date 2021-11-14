@@ -9,18 +9,6 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  transition: opacity var(--animation);
-}
-
-/* .lightbox {
-  opacity: 1;
-  pointer-events: initial;
-} */
-
-.body-fixed {
-  position: fixed;
-  width: 100%;
-  height: 100%;
 }
 
 .lightbox__overlay {
@@ -37,10 +25,6 @@
   transition: transform var(--animation);
 }
 
-/* .lightbox.is-open .lightbox__content {
-  transform: scale(1);
-} */
-
 .lightbox__image {
   display: block;
   width: auto;
@@ -54,16 +38,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   margin: 0;
   border: none;
   border-radius: 50%;
   background-color: transparent;
-  color: #fff;
+  color: var(--white-color);
   cursor: pointer;
-  transition: background-color var(--animation), opacity var(--animation);
+  transition: background-color var(--animation), color var(--animation);
   outline: none;
 
   background-position: center;
@@ -71,34 +55,21 @@
   background-repeat: no-repeat;
 }
 
-.lightbox__button--close {
+.lightbox__buttonClose {
+  composes: lightbox__button;
   top: 8px;
   right: 8px;
-  /* background-image: url('../images/svg/icon-close.svg'); */
 }
 
-.lightbox__button--close:hover,
-.lightbox__button--close:focus {
-  background-color: rgba(0, 0, 0, 0.5);
+.lightbox__buttonClose:hover,
+.lightbox__buttonClose:focus {
+  color: var(--accent-hover-color);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.lightbox__button--arrow-left {
-  top: 50%;
-  left: 40px;
-  /* background-image: url('../images/svg/arrow-left.svg'); */
-  opacity: 0.4;
-}
-
-.lightbox__button--arrow-right {
-  top: 50%;
-  right: 40px;
-  /* background-image: url('../images/svg/arrow-right.svg'); */
-  opacity: 0.4;
-}
-
-.lightbox__button--arrow-left:hover,
-.lightbox__button--arrow-left:focus,
-.lightbox__button--arrow-right:hover,
-.lightbox__button--arrow-right:focus {
-  opacity: 0.8;
+.icon {
+  display: inline-block;
+  fill: currentColor;
+  filter: drop-shadow(2px 2px 4px rgba(63, 63, 63, 0.616))
+    drop-shadow(1px 1px 1px rgba(63, 63, 63, 0.616));
 }

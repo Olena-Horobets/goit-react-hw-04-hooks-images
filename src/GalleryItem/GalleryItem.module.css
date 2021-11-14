@@ -56,44 +56,25 @@
 }
 
 .infoItem {
-  color: rgb(255, 255, 255);
+  color: var(--white-color);
   opacity: 0.93;
   font-weight: 400;
   font-size: 17px;
   line-height: 1;
-  text-shadow: 2px 2px 4px rgba(63, 63, 63, 0.616),
-    1px 1px 1px rgba(63, 63, 63, 0.616);
+  text-shadow: var(--text-shadow);
+  display: inline-flex;
+  align-items: flex-end;
 }
 
 .infoItem:not(first-child) {
   margin-left: 12px;
 }
 
-/* icons */
-.materialIcons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 16px;
+.icon {
   display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: inherit;
-  white-space: nowrap;
-  direction: ltr;
-
   margin-left: 5px;
   opacity: 0.93;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
+  fill: currentColor;
+  filter: drop-shadow(2px 2px 4px rgba(63, 63, 63, 0.616))
+    drop-shadow(1px 1px 1px rgba(63, 63, 63, 0.616));
 }

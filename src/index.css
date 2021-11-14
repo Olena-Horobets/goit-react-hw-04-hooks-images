@@ -9,10 +9,12 @@
     1.3px 1.3px 0.75px 0px #1b1b1b13, 2.7px 3px 1.5px 0px #11111115,
     5px 5px 4px 1px #1f272917, 6px 7px 4px 0px #1d232515,
     9px 10px 6px 0px #1c1d1d1c, 12px 12px 6px 0px #2428290a;
-  --text-shadow: 3px 3px 6px rgba(63, 63, 63, 0.616),
+  --heading-shadow: 3px 3px 6px rgba(63, 63, 63, 0.616),
     1px 1px 1px rgba(63, 63, 63, 0.616);
   --btn-shadow: inset 3px 3px 8px rgba(255, 255, 255, 0.38),
     inset -3px -3px 8px rgba(0, 0, 0, 0.38);
+  --text-shadow: 2px 2px 4px rgba(63, 63, 63, 0.616),
+    1px 1px 1px rgba(63, 63, 63, 0.616);
 
   --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --secondary-animation: 150ms ease-out;
@@ -21,6 +23,7 @@
 html {
   box-sizing: border-box;
   overflow-y: overlay;
+  scroll-behavior: smooth;
 }
 
 *,

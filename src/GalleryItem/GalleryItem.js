@@ -2,6 +2,7 @@ import s from './GalleryItem.module.css';
 
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ReactComponent as ReactSprite } from 'images/sprite.svg';
 
 class GalleryItem extends Component {
   render() {
@@ -14,6 +15,7 @@ class GalleryItem extends Component {
         datasrc={image.largeImageURL}
         dataalt={image.tags}
       >
+        <ReactSprite />
         <img
           className={s.galleryCard__img}
           src={image.webformatURL}
@@ -24,19 +26,27 @@ class GalleryItem extends Component {
           <div className={s.info__thumb}>
             <p className={s.infoItem}>
               <span>{image.likes}</span>
-              <span className={s.materialIcons}>favorite</span>
+              <svg className={s.icon} width="18" height="18">
+                <use href="#icon-like"></use>
+              </svg>
             </p>
             <p className={s.infoItem}>
               <span>{image.views}</span>
-              <span className={s.materialIcons}>visibility</span>
+              <svg className={s.icon} width="18" height="18">
+                <use href="#icon-view"></use>
+              </svg>
             </p>
             <p className={s.infoItem}>
               <span>{image.comments}</span>
-              <span className={s.materialIcons}>textsms</span>
+              <svg className={s.icon} width="18" height="18">
+                <use href="#icon-comment"></use>
+              </svg>
             </p>
             <p className={s.infoItem}>
               <span>{image.downloads}</span>
-              <span className={s.materialIcons}>cloud_download</span>
+              <svg className={s.icon} width="18" height="18">
+                <use href="#icon-download"></use>
+              </svg>
             </p>
           </div>
 

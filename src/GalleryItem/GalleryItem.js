@@ -1,5 +1,7 @@
 import s from './GalleryItem.module.css';
+
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class GalleryItem extends Component {
   render() {
@@ -47,5 +49,20 @@ class GalleryItem extends Component {
     );
   }
 }
+
+GalleryItem.propTypes = {
+  image: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    webformatURL: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    comments: PropTypes.number.isRequired,
+    downloads: PropTypes.number.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+  }),
+
+  onCardClick: PropTypes.func.isRequired,
+};
 
 export { GalleryItem };

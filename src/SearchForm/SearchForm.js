@@ -1,6 +1,7 @@
 import s from './SearchForm.module.css';
 
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Button } from 'Button/Button';
 
@@ -62,5 +63,10 @@ class SearchForm extends Component {
     );
   }
 }
+
+SearchForm.propTypes = {
+  notify: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export { SearchForm };

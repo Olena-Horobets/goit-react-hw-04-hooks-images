@@ -40,7 +40,7 @@ class App extends Component {
     modal: {
       isShown: false,
       imageUrl: '',
-      alt: '',
+      alt: 'photo',
     },
   };
 
@@ -105,14 +105,14 @@ class App extends Component {
       return (
         <>
           <Gallery images={images} onCardClick={this.onGalleryCardClick} />
-          {!this.isLastPage() ? (
+          {!this.isLastPage() && (
             <Button
               type="button"
               class="btn"
               text="Load more"
               onClick={this.onLoadMore}
             />
-          ) : null}
+          )}
         </>
       );
     }
@@ -153,7 +153,7 @@ class App extends Component {
     this.toggleModal(url, alt);
   };
 
-  toggleModal = (imageUrl = '', alt = '') => {
+  toggleModal = (imageUrl = '', alt = 'photo') => {
     this.setState(({ modal }) => {
       return { modal: { isShown: !modal.isShown, imageUrl, alt } };
     });
@@ -167,17 +167,17 @@ class App extends Component {
         <ToastContainer theme="colored" icon={true} limit={1} />
         <Header />
         <div className="container">
-          {modal.isShown && (
-            <Modal
-              src={modal.imageUrl}
-              alt={modal.alt}
-              onModalClose={this.toggleModal}
-            />
-          )}
           <SearchForm onSubmit={this.onSearchSubmit} notify={notify} />
           {this.defineMainContent()}
         </div>
         <Footer />
+        {modal.isShown && (
+          <Modal
+            src={modal.imageUrl}
+            alt={modal.alt}
+            onModalClose={this.toggleModal}
+          />
+        )}
       </div>
     );
   }

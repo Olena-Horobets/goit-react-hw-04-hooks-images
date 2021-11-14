@@ -1,6 +1,7 @@
-import './Modal.css';
+import s from './Modal.module.css';
 
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -15,28 +16,27 @@ class Modal extends Component {
   }
 
   onEscapePress = e => {
-    if (e.code !== 'Escape') {
-      return;
-    } else {
-      this.props.onModalClose();
-    }
+    return e.code !== 'Escape' ? null : this.props.onModalClose();
   };
 
   onBackdropClick = e => {
-    return e.target === e.currentTarget ? this.props.onModalClose() : null;
+    return e.target !== e.currentTarget ? null : this.props.onModalClose();
   };
 
   render() {
     return createPortal(
-      <div className="lightbox js-lightbox">
-        <div className="lightbox__overlay" onClick={this.onBackdropClick}></div>
-        <div className="lightbox__content">
+      <div className={s.lightbox}>
+        <div
+          className={s.lightbox__overlay}
+          onClick={this.onBackdropClick}
+        ></div>
+        <div className={s.lightbox__content}>
           <img
-            className="lightbox__image"
+            className={s.lightbox__image}
             src={this.props.src}
             alt={this.props.alt}
           />
-          <div className="lightbox__info">
+          <div className={s.lightbox__info}>
             <button
               type="button"
               // className="lightbox__button lightbox__button--close"
@@ -69,5 +69,11 @@ class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  onModalClose: PropTypes.func.isRequired,
+};
 
 export { Modal };

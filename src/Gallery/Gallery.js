@@ -11,10 +11,7 @@ class Gallery extends Component {
           return (
             <GalleryItem
               key={el.id}
-              url={el.webformatURL}
-              alt={el.tags}
-              id={el.id}
-              datasrc={el.largeImageURL}
+              image={el}
               onCardClick={this.props.onCardClick}
             />
           );

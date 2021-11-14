@@ -61,9 +61,6 @@ class App extends Component {
       photoFinder
         .getFetchResponse(newValue)
         .then(response => {
-          // if (!response || !response.length) {
-          //   throw Error;
-          // }
           this.setState({ images: [...response] });
           try {
             this.setState({ status: STATUS.RESOLVED });
@@ -90,6 +87,7 @@ class App extends Component {
     this.setState({
       searchValue: '',
       images: [],
+      status: STATUS.IDLE,
     });
   };
 
@@ -110,9 +108,6 @@ class App extends Component {
     photoFinder
       .getFetchResponse(searchValue)
       .then(response => {
-        // if (!response || !response.length) {
-        //   throw Error;
-        // }
         this.setState(({ images }) => {
           return { images: [...images, ...response] };
         });

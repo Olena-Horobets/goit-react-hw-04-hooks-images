@@ -36,18 +36,18 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
-}
-
 h1,
 h2,
 p,
 b {
   margin: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 
 .is-hidden {
@@ -63,7 +63,7 @@ b {
 
 .container {
   width: 100%;
-  padding: 160px 40px 60px;
+  padding: 180px 40px 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;

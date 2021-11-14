@@ -1,4 +1,4 @@
-import 'LoadingView/LoadingView.css';
+import s from 'LoadingView/LoadingView.module.css';
 import 'Gallery/Gallery.css';
 
 import { Component } from 'react';
@@ -11,8 +11,12 @@ class LoadingViev extends Component {
       <ul className="gallery">
         {array.map(el => {
           return (
-            <li key={el} className="loadingItem">
-              <span className="dot"></span>
+            <li key={el} className={s.loadingItem}>
+              <div className={s.dotBox}>
+                <span className={s.dot1}></span>
+                <span className={s.dot2}></span>
+                <span className={s.dot3}></span>
+              </div>
             </li>
           );
         })}

@@ -1,7 +1,7 @@
 import './commonStyles.css';
 
 import { Component } from 'react';
-import { photoFinder } from 'APIdataFetch';
+import { photoFinder } from './services/APIdataFetch';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,10 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Header } from './components/Header/Header';
 import { SearchForm } from './components/SearchForm/SearchForm';
 import { Gallery } from './components/Gallery/Gallery';
-import { Button } from 'components/Button/Button';
+import { Button } from './components/Button/Button';
 import { Footer } from './components/Footer/Footer';
 import { Modal } from './components/Modal/Modal';
-import { LoadingViev } from 'components/LoadingView/LoadingView';
+import { LoadingViev } from './components/LoadingView/LoadingView';
 
 function smoothScrollingTo(id) {
   const element = document.getElementById(id);

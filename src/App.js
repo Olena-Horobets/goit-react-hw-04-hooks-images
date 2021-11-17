@@ -108,7 +108,7 @@ class App extends Component {
           {!this.isLastPage() && (
             <Button
               type="button"
-              class="btn"
+              styledClass="btn"
               text="Load more"
               onClick={this.onLoadMore}
             />

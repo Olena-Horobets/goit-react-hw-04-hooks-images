@@ -1,25 +1,16 @@
 import s from './Gallery.module.css';
 
-import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { GalleryItem } from '../GalleryItem/GalleryItem';
 
-class Gallery extends Component {
-  render() {
-    return (
-      <ul className={s.gallery}>
-        {this.props.images.map(el => {
-          return (
-            <GalleryItem
-              key={el.id}
-              image={el}
-              onCardClick={this.props.onCardClick}
-            />
-          );
-        })}
-      </ul>
-    );
-  }
+function Gallery({ images, onCardClick }) {
+  return (
+    <ul className={s.gallery}>
+      {images.map(el => {
+        return <GalleryItem key={el.id} image={el} onCardClick={onCardClick} />;
+      })}
+    </ul>
+  );
 }
 
 Gallery.propTypes = {

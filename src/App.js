@@ -137,7 +137,7 @@ function App() {
 
   // RENDER ITSELF
   return (
-    <div className="App" id="App">
+    <div className={modal.isShown ? 'AppFixed' : 'App'} id="App">
       <ToastContainer theme="colored" icon={true} limit={1} />
       <Header />
       <div className="container">
